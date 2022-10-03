@@ -11,6 +11,8 @@ jobs:
         - node/install:
             node-version: '16.13.2'
         - run: node --version
+        - run:
+            command: npm run build
         - persist_to_workspace:
             root: .
             paths:
@@ -25,7 +27,6 @@ jobs:
             name: Deploy Over SSH
             command: |
                 ls -la
-
 
 workflows:
     version: 2
