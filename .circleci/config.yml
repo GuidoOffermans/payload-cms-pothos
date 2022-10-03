@@ -4,18 +4,23 @@ jobs:
     build:
         machine:
             image: ubuntu-2004:202010-01
-        working_directory: ~/app
         steps:
         - checkout
         - run:
             name: Deploy Over SSH
             command: |
                 ls -la
+                node -v
+                npm run build
+        persist_to_workspace:
+            paths: 
+                - app
     deploy:
         machine:
              image: ubuntu-2004:202010-01
-        working_directory: ~/app
         steps:
+        - attach_workspace:
+            at: /app
         - run:
             name: Deploy Over SSH
             command: |
