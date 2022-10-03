@@ -10,9 +10,10 @@ jobs:
         steps:
             - checkout
             - run: ls -la
-            - node/install-packages
+            - node/install-packages:
+                pkg-manager: yarn
             - run:
-                command: npm run build
+                command: yarn run build
             - persist_to_workspace:
                 root: .
                 paths:
