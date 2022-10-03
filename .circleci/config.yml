@@ -9,6 +9,7 @@ jobs:
             tag: '16.13.2'
         steps:
             - checkout
+            - run: ls -la
             - node/install-packages
             - run:
                 command: npm run build
