@@ -4,15 +4,13 @@ orbs:
 
 jobs:
     build:
-        machine:
-            image: ubuntu-2004:202010-01
+        docker:
+            - image: cimg/base:stable
         steps:
         - checkout
-        - node/run:
-            npm-run: install
-        persist_to_workspace:
-            paths: 
-                - app
+        - node/install:
+            install-yarn: true
+        - run: node --version
     deploy:
         machine:
              image: ubuntu-2004:202010-01
