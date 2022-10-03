@@ -20,7 +20,7 @@ jobs:
              image: ubuntu-2004:202010-01
         steps:
         - attach_workspace:
-            at: /app
+            at: .
         - run:
             name: Deploy Over SSH
             command: |
