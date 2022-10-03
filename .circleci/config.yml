@@ -1,6 +1,6 @@
-version: 2
+version: 2.1
 orbs:
-  node: circleci/node@16.13.2
+    node: circleci/node@5.0.3
 
 jobs:
     build:
@@ -9,8 +9,12 @@ jobs:
         steps:
         - checkout
         - node/install:
-            install-yarn: true
+            node-version: '16.13.2'
         - run: node --version
+        - persist_to_workspace:
+            root: app
+            paths:
+                - .
     deploy:
         machine:
              image: ubuntu-2004:202010-01
