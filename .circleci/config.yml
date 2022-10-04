@@ -28,7 +28,7 @@ jobs:
         - run:
             name: Deploy Over SSH
             command: |
-                ls -la
+                ssh -i $SSH_KEY $SSH_USER@$SSH_HOST "ls -la"
 
 workflows:
     version: 2
