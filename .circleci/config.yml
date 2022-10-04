@@ -32,7 +32,7 @@ jobs:
         - run:
             name: Deploy Over SSH
             command: |
-                scp -r build.tgz $SSH_USER@$SSH_HOST:/
+                scp -r build.tgz $SSH_USER@$SSH_HOST:~/
 
 workflows:
     version: 2
