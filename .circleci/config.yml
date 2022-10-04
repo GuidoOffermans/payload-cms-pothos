@@ -30,9 +30,14 @@ jobs:
             fingerprints:
                 - "01:fe:9f:ed:05:ea:d1:07:95:cf:56:e9:61:61:d4:9e"
         - run:
-            name: Deploy Over SSH
+            name: Deploy zip
             command: |
-                scp -r build.tgz $SSH_USER@$SSH_HOST:~/
+                scp -r build.tgz $SSH_USER@$SSH_HOST:~/apps/payload-cms
+        - run:
+            name: Deploy zip
+            command: |
+                ssh $SSH_USER@$SSH_HOST "tar -xzf build.tgz && rm build.tgz"
+
 
 workflows:
     version: 2
