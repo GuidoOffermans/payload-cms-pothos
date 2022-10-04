@@ -25,10 +25,13 @@ jobs:
         steps:
         - attach_workspace:
             at: .
+        - add_ssh_keys:
+            fingerprints:
+                - "01:fe:9f:ed:05:ea:d1:07:95:cf:56:e9:61:61:d4:9e"
         - run:
             name: Deploy Over SSH
             command: |
-                ssh -i $SSH_KEY $SSH_USER@$SSH_HOST "ls -la"
+                ssh $SSH_USER@$SSH_HOST "ls -la"
 
 workflows:
     version: 2
