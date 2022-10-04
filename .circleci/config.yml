@@ -14,11 +14,12 @@ jobs:
                 pkg-manager: yarn
             - run:
                 command: yarn run build
+            - run: tar -czf build.tgz build dist
+            - run: ls -la
             - persist_to_workspace:
                 root: .
                 paths:
-                - dist
-                - build
+                - build.tgz
     deploy:
         machine:
              image: ubuntu-2004:202010-01
