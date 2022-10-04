@@ -36,7 +36,7 @@ jobs:
         - run:
             name: Deploy zip
             command: |
-                ssh $SSH_USER@$SSH_HOST "tar -xzf build.tgz && rm build.tgz"
+                ssh $SSH_USER@$SSH_HOST "cd ~/apps/payload-cms && tar -xzf build.tgz && rm build.tgz"
 
 
 workflows:
