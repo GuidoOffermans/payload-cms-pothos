@@ -41,6 +41,8 @@ jobs:
         steps:
         - attach_workspace:
             at: .
+        - run: 
+            command: ls -la
         - run:
             name: Deploy zip
             command: |
