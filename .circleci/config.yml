@@ -14,7 +14,7 @@ jobs:
                 app-dir: ./app
                 pkg-manager: yarn
             - run:
-                command: yarn --cwd app install
+                command: yarn --cwd app build
             - run: ls -la && ls -la ./app
             - run: tar -cvzf build.tgz ./app/node_modules ./app/build ./app/dist
             - run: ls -la
