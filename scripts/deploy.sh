@@ -8,4 +8,4 @@ tar -xzf ~/apps/payload-cms/app/build.tgz
 
 rm ~/apps/payload-cms/app/build.tgz
 
-npx pm2
+# pm2
