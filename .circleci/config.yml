@@ -49,7 +49,7 @@ jobs:
         - run:
             name: Deploy zip
             command: |
-                ssh $SSH_USER@$SSH_HOST "ls -la && bash ~/apps/payload-cms/scripts/deploy.sh"
+                ssh $SSH_USER@$SSH_HOST "ls -la && bash ~/apps/payload-cms/scripts/deploy.sh && which pm2"
 
 workflows:
     version: 2
