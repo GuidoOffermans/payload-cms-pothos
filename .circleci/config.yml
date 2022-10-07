@@ -34,6 +34,7 @@ jobs:
         - run:
             name: Deploy zip
             command: |
+                ls -la
                 scp -r build.tgz $SSH_USER@$SSH_HOST:~/apps/payload-cms
                 scp -r scripts $SSH_USER@$SSH_HOST:~/apps/payload-cms/scripts
     deploy:
