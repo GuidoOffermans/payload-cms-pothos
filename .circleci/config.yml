@@ -11,7 +11,7 @@ jobs:
             - checkout:
                 path: ./app
             - run: cd ./app
-            - run: la ./app
+            - run: ls -la ./app
             - node/install-packages:
                 pkg-manager: yarn
             - run:
