@@ -1,3 +1,5 @@
-tar -xzf build.tgz
+pwd
 
-rm build.tgz
+#tar -xzf build.tgz
+#
+#rm build.tgz
