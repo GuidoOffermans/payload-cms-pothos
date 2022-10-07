@@ -46,7 +46,7 @@ jobs:
         - run:
             name: Deploy zip
             command: |
-                ssh $SSH_USER@$SSH_HOST "bash ~/apps/payload-cms/app/script/deploy.sh"
+                ssh $SSH_USER@$SSH_HOST "bash ~/apps/payload-cms/app/scripts/deploy.sh"
 
 workflows:
     version: 2
