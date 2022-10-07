@@ -21,7 +21,8 @@ jobs:
                 root: .
                 paths:
                 - build.tgz
-    deploy:
+                - ./app/scripts
+    deploy-zip-to-server:
         machine:
              image: ubuntu-2004:202010-01
         steps:
@@ -34,6 +35,12 @@ jobs:
             name: Deploy zip
             command: |
                 scp -r build.tgz $SSH_USER@$SSH_HOST:~/apps/payload-cms
+    deploy:
+        machine:
+             image: ubuntu-2004:202010-01
+        steps:
+        - attach_workspace:
+            at: .
         - run:
             name: Deploy zip
             command: |
@@ -45,9 +52,15 @@ workflows:
     build-and-deploy:
         jobs:
             - build
-            - deploy:
+            - deploy-zip-to-server:
                 requires:
-                - build # only deploy once build job has completed
+                - build
                 filters:
                     branches:
-                        only: main # only deploy on the main branch
+                        only: main
+            - deploy:
+                requires:
+                - build
+                filters:
+                    branches:
+                        only: main
