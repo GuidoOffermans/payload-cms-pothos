@@ -14,8 +14,9 @@ jobs:
                 app-dir: ./app
                 pkg-manager: yarn
             - run:
-                command: yarn --cwd app install
-            - run: tar -cvzf build.tgz ./app
+                command: yarn --cwd app build
+            - run: ls -la && ls -la ./app
+            - run: tar -cvzf build.tgz ./app/node_modules ./app/build ./app/dist
             - run: ls -la
             - persist_to_workspace:
                 root: .
@@ -34,7 +35,9 @@ jobs:
         - run:
             name: Deploy zip
             command: |
+                ls -la
                 scp -r build.tgz $SSH_USER@$SSH_HOST:~/apps/payload-cms
+                scp -r ./app/scripts $SSH_USER@$SSH_HOST:~/apps/payload-cms
     deploy:
         machine:
              image: ubuntu-2004:202010-01
@@ -46,8 +49,7 @@ jobs:
         - run:
             name: Deploy zip
             command: |
-                ssh $SSH_USER@$SSH_HOST "cd ~/apps/payload-cms && tar -xzf build.tgz && rm build.tgz"
-
+                ssh $SSH_USER@$SSH_HOST "ls -la && bash ~/apps/payload-cms/app/scripts/deploy.sh"
 
 workflows:
     version: 2
