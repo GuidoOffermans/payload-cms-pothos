@@ -10,4 +10,4 @@ tar -xzf ~/apps/payload-cms/app/build.tgz
 
 rm ~/apps/payload-cms/app/build.tgz
 
-pm2 start ~/apps/payload-cms/ecosystem.config.js
+~/.nvm/versions/node/v16.13.2/bin/pm2 start ~/apps/payload-cms/ecosystem.config.js
