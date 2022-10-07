@@ -60,7 +60,7 @@ workflows:
                         only: main
             - deploy:
                 requires:
-                - build
+                - deploy-zip-to-server
                 filters:
                     branches:
                         only: main
