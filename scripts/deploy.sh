@@ -1,5 +1,7 @@
-pwd
+rm -rf ~/apps/payload-cms/app
 
-#tar -xzf build.tgz
-#
-#rm build.tgz
+mkdir ~/apps/payload-cms/app
+
+tar -xzf ~/apps/payload-cms/artifacts/build.tgz ~/apps/payload-cms/app
+
+rm ~/apps/payload-cms/artifacts/build.tgz
