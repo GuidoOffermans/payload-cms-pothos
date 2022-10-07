@@ -15,7 +15,7 @@ jobs:
                 pkg-manager: yarn
             - run:
                 command: yarn --cwd app install
-            - run: ls -la
+            - run: ls -la && ls -la ./app
             - run: tar -cvzf build.tgz ./app/node_modules ./app/build ./app/dist
             - run: ls -la
             - persist_to_workspace:
