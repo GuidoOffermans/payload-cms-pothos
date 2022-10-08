@@ -36,20 +36,9 @@ jobs:
             name: Deploy zip
             command: |
                 ls -la
-                scp -r build.tgz $SSH_USER@$SSH_HOST:~/apps/payload-cms/artifacts
-                scp -r ./app/scripts $SSH_USER@$SSH_HOST:~/apps/payload-cms
-    deploy:
-        machine:
-             image: ubuntu-2004:202010-01
-        steps:
-        - attach_workspace:
-            at: .
-        - run: 
-            command: ls -la
-        - run:
-            name: Deploy zip
-            command: |
-                ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "bash ~/apps/payload-cms/scripts/deploy.sh"
+                ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "rm -rf ~/apps/payload-cms/app"
+                scp -r build.tgz $SSH_USER@$SSH_HOST:~/apps/payload-cms
+                ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "tar -xvf ~/apps/payload-cms/build.tgz -C ~/apps/payload-cms && echo "DONE" && rm -rf ~/apps/payload-cms/build.tgz"
 
 workflows:
     version: 2
@@ -59,12 +48,6 @@ workflows:
             - deploy-zip-to-server:
                 requires:
                 - build
-                filters:
-                    branches:
-                        only: main
-            - deploy:
-                requires:
-                - deploy-zip-to-server
                 filters:
                     branches:
                         only: main
