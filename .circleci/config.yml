@@ -13,6 +13,8 @@ jobs:
             - node/install-packages:
                 app-dir: ./app
                 pkg-manager: yarn
+            - run: 
+                command: yarn add pm2
             - run:
                 command: yarn --cwd app build
             - run: ls -la && ls -la ./app
@@ -39,7 +41,7 @@ jobs:
                 ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "rm -rf ~/apps/payload-cms/app"
                 scp -r build.tgz $SSH_USER@$SSH_HOST:~/apps/payload-cms
                 ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "tar -xvf ~/apps/payload-cms/build.tgz -C ~/apps/payload-cms && echo "DONE" && rm -rf ~/apps/payload-cms/build.tgz"
-                ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "pm2 ls"
+                ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "~/apps/payload-cms/app/node_modules/.bin/pm2"
 
 workflows:
     version: 2
