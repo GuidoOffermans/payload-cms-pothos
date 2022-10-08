@@ -41,7 +41,7 @@ jobs:
                 ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "tar -xvf ~/apps/payload-cms/build.tgz -C ~/apps/payload-cms && echo "DONE" && rm -rf ~/apps/payload-cms/build.tgz"
         - run:
             name: check pm2
-            command: ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "ls -la ~/apps/payload-cms/app/ && ~/apps/payload-cms/app/node_modules/.bin/pm2"
+            command: ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "ls -la ~/apps/payload-cms/app/ && cd ~/apps/payload-cms/app/node_modules && ls"
 
 workflows:
     version: 2
