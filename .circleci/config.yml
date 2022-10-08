@@ -13,8 +13,6 @@ jobs:
             - node/install-packages:
                 app-dir: ./app
                 pkg-manager: yarn
-            - run: 
-                command: yarn add pm2
             - run:
                 command: yarn --cwd app build
             - run: ls -la && ls -la ./app
