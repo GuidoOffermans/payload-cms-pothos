@@ -38,7 +38,7 @@ jobs:
                 ls -la
                 ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "rm -rf ~/apps/payload-cms/app && mkdir ~/apps/payload-cms/app"
                 scp -r build.tgz $SSH_USER@$SSH_HOST:~/apps/payload-cms/app
-                ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "tar -xzf ~/apps/payload-cms/app/build.tgz && echo "DONE""
+                ssh -o ConnectTimeout=10 $SSH_USER@$SSH_HOST "tar -xvfz ~/apps/payload-cms/app/build.tgz && echo "DONE""
 
 workflows:
     version: 2
